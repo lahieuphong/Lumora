@@ -49,7 +49,7 @@ cd lumora-FE
 Lần đầu tiên, cài dependencies:
 
 ```bash
-yarn
+yarn install
 ```
 
 Chạy dev server:
