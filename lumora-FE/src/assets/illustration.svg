@@ -1,0 +1,173 @@
+<svg viewBox="0 0 520 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lumora commerce illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F3F0FB"/>
+      <stop offset="1" stop-color="#FBFAFF"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#F4F0FE"/>
+    </linearGradient>
+    <linearGradient id="sidebar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7C5CFC"/>
+      <stop offset="1" stop-color="#6038E0"/>
+    </linearGradient>
+    <linearGradient id="purpleA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9F84FF"/>
+      <stop offset="1" stop-color="#7048E8"/>
+    </linearGradient>
+    <linearGradient id="purpleB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#B9A6FF"/>
+      <stop offset="1" stop-color="#8C6BF5"/>
+    </linearGradient>
+    <linearGradient id="awning" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C9B8FF"/>
+      <stop offset="1" stop-color="#A98BFF"/>
+    </linearGradient>
+    <linearGradient id="phone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#EFE9FE"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#7E5CFB"/>
+      <stop offset="1" stop-color="#5B33D8"/>
+    </linearGradient>
+    <linearGradient id="podium" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#EDE7FC"/>
+      <stop offset="1" stop-color="#DCD2F6"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#6A4BD0" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <!-- canvas -->
+  <rect width="520" height="520" rx="28" fill="url(#bg)"/>
+  <circle cx="280" cy="225" r="180" fill="#EBE4FB" opacity="0.55"/>
+
+  <!-- floating cubes -->
+  <g opacity="0.95">
+    <path d="M380 70 l22 12 0 24 -22 12 -22 -12 0 -24z" fill="url(#purpleA)"/>
+    <path d="M380 70 l22 12 -22 12 -22 -12z" fill="#B9A6FF"/>
+    <path d="M380 94 l22 -12 0 24 -22 12z" fill="#6E47E6"/>
+  </g>
+  <path d="M150 60 l14 8 0 16 -14 8 -14 -8 0 -16z" fill="#A98BFF" opacity="0.9"/>
+
+  <!-- dashed connector -->
+  <path d="M340 120 C 380 130 392 150 388 178" stroke="#B9A6FF" stroke-width="3" stroke-dasharray="6 8" fill="none" stroke-linecap="round" opacity="0.8"/>
+
+  <!-- main browser / storefront -->
+  <g filter="url(#soft)">
+    <rect x="96" y="120" width="250" height="250" rx="22" fill="url(#screen)"/>
+  </g>
+  <!-- awning -->
+  <path d="M118 150 q114 -26 210 0 l-8 26 q-98 -22 -194 0 z" fill="url(#awning)"/>
+  <g fill="#8C6BF5" opacity="0.55">
+    <path d="M126 152 l-5 24 26 -4 4 -22z"/>
+    <path d="M178 148 l-2 22 28 -2 0 -22z"/>
+    <path d="M232 148 l2 20 28 2 -4 -24z"/>
+    <path d="M286 152 l6 22 24 4 -8 -24z"/>
+  </g>
+
+  <!-- sidebar -->
+  <rect x="110" y="186" width="34" height="170" rx="14" fill="url(#sidebar)"/>
+  <g fill="#FFFFFF" opacity="0.92">
+    <circle cx="127" cy="206" r="7"/>
+    <rect x="120" y="230" width="14" height="11" rx="3"/>
+    <rect x="120" y="252" width="14" height="11" rx="3"/>
+    <circle cx="127" cy="280" r="6"/>
+    <circle cx="127" cy="304" r="6"/>
+    <circle cx="127" cy="328" r="6"/>
+  </g>
+
+  <!-- search bar -->
+  <rect x="158" y="194" width="172" height="20" rx="10" fill="#EDE7FC"/>
+  <circle cx="170" cy="204" r="4" fill="#9F84FF"/>
+
+  <!-- product grid -->
+  <g>
+    <rect x="158" y="228" width="52" height="44" rx="9" fill="#EFE9FE"/>
+    <path d="M176 246 l8 6 0 10 -8 5 -8 -5 0 -10z" fill="url(#purpleA)"/>
+    <rect x="218" y="228" width="52" height="44" rx="9" fill="#EFE9FE"/>
+    <path d="M232 262 l6 -18 8 0 6 18z" fill="#8C6BF5"/><rect x="236" y="244" width="10" height="4" fill="#8C6BF5"/>
+    <rect x="278" y="228" width="52" height="44" rx="9" fill="#EFE9FE"/>
+    <rect x="290" y="244" width="28" height="18" rx="3" fill="#9F84FF"/><rect x="296" y="238" width="16" height="8" fill="#B9A6FF"/>
+
+    <rect x="158" y="282" width="52" height="44" rx="9" fill="#EFE9FE"/>
+    <circle cx="184" cy="300" r="9" fill="#C9B8FF"/><rect x="178" y="306" width="12" height="14" rx="3" fill="#8C6BF5"/>
+    <rect x="218" y="282" width="52" height="44" rx="9" fill="#EFE9FE"/>
+    <rect x="232" y="296" width="24" height="20" rx="5" fill="#9F84FF"/><circle cx="238" cy="302" r="2.4" fill="#fff"/><circle cx="250" cy="302" r="2.4" fill="#fff"/>
+    <rect x="278" y="282" width="52" height="44" rx="9" fill="#EFE9FE"/>
+    <path d="M296 318 c-10 -10 -2 -22 8 -14 10 -8 18 4 8 14 l-8 6z" fill="#7048E8"/>
+  </g>
+
+  <!-- phone card on right -->
+  <g filter="url(#soft)">
+    <rect x="356" y="172" width="96" height="170" rx="20" fill="url(#phone)"/>
+  </g>
+  <rect x="368" y="186" width="72" height="34" rx="9" fill="#EDE7FC"/>
+  <circle cx="386" cy="203" r="9" fill="#9F84FF"/>
+  <rect x="400" y="196" width="32" height="5" rx="2.5" fill="#C9B8FF"/>
+  <rect x="400" y="206" width="22" height="5" rx="2.5" fill="#D8CEFA"/>
+  <circle cx="430" cy="200" r="6" fill="#6E47E6"/><path d="M427 200 l2 2 4 -4" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  <rect x="368" y="232" width="72" height="7" rx="3.5" fill="#E3DBF8"/>
+  <rect x="368" y="246" width="56" height="7" rx="3.5" fill="#E3DBF8"/>
+  <path d="M404 296 a26 26 0 0 1 36 0 l0 30 -36 0z" fill="url(#purpleA)" opacity="0.25"/>
+  <path d="M404 326 h36 a18 18 0 0 0 -36 0z" fill="#8C6BF5"/>
+
+  <!-- shield / security badge -->
+  <g filter="url(#soft)">
+    <path d="M402 244 c20 -10 40 -10 60 0 0 34 -10 52 -30 64 -20 -12 -30 -30 -30 -64z" fill="url(#shield)"/>
+  </g>
+  <rect x="421" y="278" width="22" height="18" rx="4" fill="#fff"/>
+  <path d="M425 278 v-5 a7 7 0 0 1 14 0 v5" stroke="#fff" stroke-width="3.4" fill="none"/>
+
+  <!-- cart -->
+  <g transform="translate(388,332)">
+    <rect x="0" y="0" width="64" height="42" rx="14" fill="url(#purpleB)" filter="url(#soft)"/>
+    <path d="M14 14 h34 l-5 16 h-24z" fill="#fff" opacity="0.92"/>
+    <path d="M14 14 l-4 -6 -6 0" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="20" cy="36" r="3.4" fill="#fff"/><circle cx="40" cy="36" r="3.4" fill="#fff"/>
+  </g>
+  <g transform="translate(440,326)">
+    <circle r="13" fill="#E8453C"/><text x="0" y="5" text-anchor="middle" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#fff">2</text>
+  </g>
+
+  <!-- podiums + products bottom -->
+  <ellipse cx="270" cy="430" rx="180" ry="30" fill="#E3DBF8" opacity="0.6"/>
+  <g filter="url(#soft)">
+    <rect x="150" y="392" width="92" height="40" rx="14" fill="url(#podium)"/>
+  </g>
+  <g filter="url(#soft)">
+    <rect x="262" y="404" width="76" height="34" rx="14" fill="url(#podium)"/>
+  </g>
+
+  <!-- pixel/voxel product -->
+  <g transform="translate(176,346)">
+    <path d="M0 26 l26 -14 26 14 0 30 -26 14 -26 -14z" fill="#9F84FF"/>
+    <path d="M0 26 l26 14 0 30 -26 -14z" fill="#7048E8"/>
+    <path d="M52 26 l-26 14 0 30 26 -14z" fill="#6038E0"/>
+    <rect x="14" y="20" width="10" height="10" fill="#C9B8FF"/>
+  </g>
+  <!-- box -->
+  <g transform="translate(282,372)">
+    <path d="M0 14 l22 -12 22 12 0 24 -22 12 -22 -12z" fill="#EDE7FC"/>
+    <path d="M0 14 l22 12 0 24 -22 -12z" fill="#D8CEFA"/>
+    <path d="M44 14 l-22 12 0 24 22 -12z" fill="#C7BAF2"/>
+    <path d="M0 14 l22 12 22 -12" fill="none" stroke="#B9A6FF" stroke-width="1.5"/>
+  </g>
+
+  <!-- plant -->
+  <g transform="translate(108,372)">
+    <path d="M18 56 l-8 -36 16 0z" fill="#EDE7FC"/>
+    <path d="M14 22 c-12 -8 -14 -26 -2 -34 6 10 6 24 2 34z" fill="#8C6BF5"/>
+    <path d="M16 22 c10 -10 26 -10 30 2 -12 4 -24 4 -30 -2z" fill="#9F84FF"/>
+    <path d="M16 20 c0 -16 8 -28 18 -32 -2 16 -8 28 -18 32z" fill="#7048E8" opacity="0.85"/>
+  </g>
+
+  <!-- little sphere -->
+  <circle cx="404" cy="430" r="14" fill="#EDE7FC"/>
+  <circle cx="400" cy="426" r="4" fill="#fff" opacity="0.8"/>
+  <!-- small cube bottom-left -->
+  <path d="M150 452 l12 -7 12 7 0 14 -12 7 -12 -7z" fill="#A98BFF"/>
+</svg>

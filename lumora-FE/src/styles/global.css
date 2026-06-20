@@ -1,0 +1,79 @@
+:root {
+  /* Brand */
+  --color-bg-outer: #54565a;
+  --color-bg: #161a26;
+  --color-panel: #161a26;
+  --color-surface: #1d2433;
+  --color-input-bg: #1b2130;
+  --color-input-border: #2c3447;
+  --color-input-border-focus: #f2d44e;
+
+  --color-primary: #f2d44e;
+  --color-primary-hover: #ecca37;
+  --color-on-primary: #1a1f2e;
+
+  --color-heading: #ffffff;
+  --color-text: #d6dae3;
+  --color-muted: #8b92a3;
+  --color-link: #f2d44e;
+  --color-danger: #ff6b6b;
+  --color-success: #4ade80;
+
+  --logo-orange-1: #ff7a45;
+  --logo-orange-2: #e8453c;
+
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-panel: 14px;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --shadow-card: 0 24px 60px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg-outer);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input {
+  font-family: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
