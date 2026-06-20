@@ -5,10 +5,10 @@ Frontend của Lumora — **React 18 + Vite + React Router**.
 ## Cài đặt & chạy
 
 ```bash
-npm install
-npm run dev      # http://localhost:5173
-npm run build    # build production -> dist/
-npm run preview  # xem thử bản build
+yarn             # cài dependencies
+yarn dev         # http://localhost:5173
+yarn build       # build production -> dist/
+yarn preview     # xem thử bản build
 ```
 
 ## Cấu trúc

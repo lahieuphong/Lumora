@@ -47,6 +47,9 @@ dist/
 dist-ssr/
 *.local
 
+# npm (không dùng)
+package-lock.json
+
 # Vite cache
 .vite/
 

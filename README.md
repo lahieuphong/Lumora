@@ -38,8 +38,8 @@ docker compose up --build
 
 ```bash
 cd lumora-FE
-npm install
-npm run dev
+yarn
+yarn dev
 ```
 
 Mở `http://localhost:5173`. Vite đã proxy `/api` → `http://localhost:8000`, nên không cần cấu hình thêm.
