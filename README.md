@@ -8,42 +8,71 @@ lumora/
 └── lumora-BE/   # Backend  — Django + DRF + PostgreSQL + Docker
 ```
 
-## Các trang đã có (Frontend)
+---
 
-| Trang | Đường dẫn | Mô tả |
-|------|-----------|------|
-| Đăng nhập | `/login` | Email/SĐT + mật khẩu |
-| Quên mật khẩu | `/forgot-password` | Gửi mã OTP |
-| Nhập mã OTP | `/verify-otp` | 4 ô OTP + đếm ngược gửi lại |
-| Tạo mật khẩu mới | `/reset-password` | Đặt lại mật khẩu |
-| Trang chủ | `/` | Dashboard sau khi đăng nhập (route được bảo vệ) |
+## Hướng dẫn chạy Lumora
 
-Giao diện responsive cho **mobile / tablet / PC**, theo đúng thiết kế Figma (nền tối, nút vàng, minh hoạ tím).
+Mở **2 terminal song song** — một cho BE, một cho FE.
 
 ---
 
-## 1) Chạy Backend (Docker — khuyến nghị)
+### Terminal 1 — Backend (Docker)
 
 ```bash
 cd lumora-BE
-cp .env.example .env      # đã có sẵn .env mặc định
+```
+
+Lần đầu tiên, copy file env:
+
+```bash
+copy .env.example .env
+```
+
+Chạy Docker (build + migrate + tạo tài khoản demo tự động):
+
+```bash
 docker compose up --build
 ```
 
-- API: `http://localhost:8000/api/`
-- Khi khởi động sẽ tự tạo tài khoản demo: **demo@lumora.app / lumora123**
-- Mã OTP (khi Quên mật khẩu) được in ra **log của container backend**.
+> Lần sau (không cần build lại) thì chỉ cần: `docker compose up`
 
-## 2) Chạy Frontend
-
-```bash
-cd lumora-FE
-yarn
-yarn dev
-```
-
-Mở `http://localhost:5173`. Vite đã proxy `/api` → `http://localhost:8000`, nên không cần cấu hình thêm.
+Kiểm tra BE đã chạy chưa: mở browser vào `http://localhost:8000/api/health/`
 
 ---
 
-Chi tiết từng phần xem `lumora-FE/README.md` và `lumora-BE/README.md`.
+### Terminal 2 — Frontend (Yarn)
+
+```bash
+cd lumora-FE
+```
+
+Lần đầu tiên, cài dependencies:
+
+```bash
+yarn
+```
+
+Chạy dev server:
+
+```bash
+yarn dev
+```
+
+Mở browser vào `http://localhost:5173`
+
+---
+
+### Tài khoản demo để test
+
+| Field | Giá trị |
+|-------|---------|
+| Email | `demo@lumora.app` |
+| Password | `lumora123` |
+
+---
+
+### Lưu ý
+
+- **Phải chạy BE trước** (FE gọi API về `localhost:8000`).
+- Docker cần đang chạy trên máy — kiểm tra bằng `docker info`.
+- OTP quên mật khẩu sẽ in ra **log của terminal BE** (không gửi email thật).
