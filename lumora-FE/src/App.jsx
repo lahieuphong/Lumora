@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import Sites from './pages/Sites'
 import Live from './pages/Live'
 import Leads from './pages/Leads'
+import Members from './pages/Members'
 import { isAuthed } from './services/api'
 
 function Protected({ children }) {
@@ -53,6 +54,14 @@ export default function App() {
           element={
             <Protected>
               <Leads />
+            </Protected>
+          }
+        />
+        <Route
+          path="/members"
+          element={
+            <Protected>
+              <Members />
             </Protected>
           }
         />
