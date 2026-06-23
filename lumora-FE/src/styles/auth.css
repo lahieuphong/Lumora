@@ -278,6 +278,17 @@
   box-shadow: 0 0 0 3px rgba(242, 212, 78, 0.15);
 }
 
+.otp-ttl-hint {
+  font-size: 13px;
+  color: var(--color-muted);
+  text-align: center;
+  margin: -8px 0 20px;
+}
+
+.otp-ttl-hint strong {
+  color: var(--color-text);
+}
+
 .resend {
   display: flex;
   align-items: center;

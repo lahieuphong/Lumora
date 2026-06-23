@@ -114,6 +114,8 @@ export default function VerifyOtp() {
           ))}
         </div>
 
+        <p className="otp-ttl-hint">Mã có hiệu lực trong <strong>5 phút</strong>.</p>
+
         <button className="btn-primary" type="submit" disabled={loading}>
           {loading ? 'Đang xác thực...' : 'Xác thực'}
         </button>

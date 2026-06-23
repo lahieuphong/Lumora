@@ -1,10 +1,10 @@
-from django.core.mail import send_mail
 from rest_framework import status
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 
+from .email import deliver_otp
 from .models import OTP, PasswordResetToken, User
 from .serializers import (
     ForgotPasswordSerializer,
@@ -23,20 +23,6 @@ def tokens_for(user):
         'refresh': str(refresh),
         'user': UserSerializer(user).data,
     }
-
-
-def deliver_otp(user, code):
-    """In dev this prints the code to the console via the email backend."""
-    target = user.email
-    print(f'[LUMORA OTP] {user.identifier} -> {code}')
-    if target:
-        send_mail(
-            subject='Mã xác thực Lumora',
-            message=f'Mã OTP của bạn là: {code}. Mã có hiệu lực trong vài phút.',
-            from_email=None,
-            recipient_list=[target],
-            fail_silently=True,
-        )
 
 
 class RegisterView(APIView):
