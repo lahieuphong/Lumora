@@ -16,6 +16,7 @@ export default function VerifyOtp() {
   const [seconds, setSeconds] = useState(45)
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
+  const [resending, setResending] = useState(false)
   const inputs = useRef([])
 
   useEffect(() => {
@@ -72,6 +73,7 @@ export default function VerifyOtp() {
   const resend = async () => {
     if (seconds > 0) return
     setError('')
+    setResending(true)
     try {
       await authApi.forgotPassword(identifier)
       setSeconds(45)
@@ -79,6 +81,8 @@ export default function VerifyOtp() {
       inputs.current[0]?.focus()
     } catch {
       setError('Không thể gửi lại mã. Vui lòng thử lại.')
+    } finally {
+      setResending(false)
     }
   }
 
@@ -121,8 +125,11 @@ export default function VerifyOtp() {
         </button>
 
         <div className="resend">
-          <button type="button" onClick={resend} disabled={seconds > 0}>
-            <RefreshIcon /> Gửi lại mã
+          <button type="button" onClick={resend} disabled={seconds > 0 || resending}>
+            <span className={resending ? 'resend-icon spinning' : 'resend-icon'}>
+              <RefreshIcon />
+            </span>
+            {resending ? 'Đang gửi...' : 'Gửi lại mã'}
           </button>
           {seconds > 0 && <span className="count">({mm}:{ss})</span>}
         </div>

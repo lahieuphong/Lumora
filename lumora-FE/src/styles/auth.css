@@ -289,6 +289,19 @@
   color: var(--color-text);
 }
 
+@keyframes resend-spin {
+  to { transform: rotate(360deg); }
+}
+
+.resend-icon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.resend-icon.spinning {
+  animation: resend-spin 0.7s linear infinite;
+}
+
 .resend {
   display: flex;
   align-items: center;
