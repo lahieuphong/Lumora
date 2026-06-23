@@ -5,12 +5,27 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 })
 
-// Attach access token
+// Attach access token (skip for auth endpoints — they don't need it)
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('lumora_access')
-  if (token) config.headers.Authorization = `Bearer ${token}`
+  if (token && !config.url.startsWith('/auth/')) {
+    config.headers.Authorization = `Bearer ${token}`
+  }
   return config
 })
+
+// On 401: clear stale tokens and redirect to login
+api.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    if (err?.response?.status === 401 && !err.config.url.startsWith('/auth/')) {
+      localStorage.removeItem('lumora_access')
+      localStorage.removeItem('lumora_refresh')
+      window.location.href = '/login'
+    }
+    return Promise.reject(err)
+  }
+)
 
 export const tokens = {
   set({ access, refresh }) {
@@ -30,8 +45,11 @@ export const isAuthed = () => Boolean(tokens.access)
 
 // ---- Auth endpoints (match lumora-BE) ----
 export const authApi = {
-  login: (identifier, password) =>
-    api.post('/auth/login/', { identifier, password }),
+  login: (identifier, password) => {
+    localStorage.removeItem('lumora_access')
+    localStorage.removeItem('lumora_refresh')
+    return api.post('/auth/login/', { identifier, password })
+  },
 
   register: (payload) => api.post('/auth/register/', payload),
 

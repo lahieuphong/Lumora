@@ -66,8 +66,8 @@ Mở browser vào `http://localhost:5173`
 
 | Field | Giá trị |
 |-------|---------|
-| Email | `demo@lumora.app` |
-| Password | `lumora123` |
+| Email | `admin@gmail.com` |
+| Password | `admin123` |
 
 ---
 
