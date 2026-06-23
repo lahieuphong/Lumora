@@ -6,6 +6,7 @@ import VerifyOtp from './pages/VerifyOtp'
 import ResetPassword from './pages/ResetPassword'
 import Home from './pages/Home'
 import Sites from './pages/Sites'
+import Live from './pages/Live'
 import { isAuthed } from './services/api'
 
 function Protected({ children }) {
@@ -35,6 +36,14 @@ export default function App() {
           element={
             <Protected>
               <Sites />
+            </Protected>
+          }
+        />
+        <Route
+          path="/live"
+          element={
+            <Protected>
+              <Live />
             </Protected>
           }
         />
