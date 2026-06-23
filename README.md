@@ -76,3 +76,20 @@ Mở browser vào `http://localhost:5173`
 - **Phải chạy BE trước** (FE gọi API về `localhost:8000`).
 - Docker cần đang chạy trên máy — kiểm tra bằng `docker info`.
 - OTP quên mật khẩu sẽ in ra **log của terminal BE** (không gửi email thật).
+
+---
+
+### Lệnh migrate (khi thay đổi model)
+
+Vì backend chạy trong Docker, mọi lệnh Django phải chạy **bên trong container**:
+
+```bash
+# Tạo file migration khi models.py thay đổi
+docker exec lumora-be-backend-1 python manage.py makemigrations
+
+# Apply migration vào DB
+docker exec lumora-be-backend-1 python manage.py migrate
+
+# Kiểm tra trạng thái migration
+docker exec lumora-be-backend-1 python manage.py showmigrations accounts
+```

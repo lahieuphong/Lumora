@@ -7,14 +7,14 @@ from .models import OTP, PasswordResetToken, User
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
     ordering = ['-date_joined']
-    list_display = ['id', 'email', 'phone', 'full_name', 'is_active', 'is_staff', 'date_joined']
+    list_display = ['id', 'username', 'email', 'phone', 'full_name', 'is_active', 'is_staff', 'date_joined']
     list_filter = ['is_active', 'is_staff', 'is_superuser']
     search_fields = ['email', 'phone', 'full_name']
     readonly_fields = ['date_joined', 'last_login']
 
     fieldsets = (
         (None, {'fields': ('email', 'phone', 'password')}),
-        ('Thông tin', {'fields': ('full_name',)}),
+        ('Thông tin', {'fields': ('username', 'full_name',)}),
         ('Quyền', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
         ('Thời gian', {'fields': ('last_login', 'date_joined')}),
     )

@@ -20,7 +20,6 @@ class Migration(migrations.Migration):
                 ('password', models.CharField(max_length=128, verbose_name='password')),
                 ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
                 ('is_superuser', models.BooleanField(default=False, help_text='Designates that this user has all permissions without explicitly assigning them.', verbose_name='superuser status')),
-                ('username', models.CharField(blank=True, max_length=50, null=True, unique=True, verbose_name='Tên đăng nhập')),
                 ('full_name', models.CharField(blank=True, max_length=120, verbose_name='Họ và tên')),
                 ('email', models.EmailField(blank=True, max_length=254, null=True, unique=True, verbose_name='Email')),
                 ('phone', models.CharField(blank=True, max_length=20, null=True, unique=True, verbose_name='Số điện thoại')),
