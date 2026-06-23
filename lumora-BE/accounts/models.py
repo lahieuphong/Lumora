@@ -10,7 +10,6 @@ from .managers import UserManager
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField('Tên đăng nhập', max_length=50, unique=True, null=True, blank=True)
     full_name = models.CharField('Họ và tên', max_length=120, blank=True)
     email = models.EmailField('Email', unique=True, null=True, blank=True)
     phone = models.CharField('Số điện thoại', max_length=20, unique=True, null=True, blank=True)
@@ -21,7 +20,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'username'
+    USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
     class Meta:
@@ -37,6 +36,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def save(self, *args, **kwargs):
         # Avoid empty-string clashing with the unique constraint.
+        if not self.username:
+            self.username = None
         if not self.email:
             self.email = None
         if not self.phone:
