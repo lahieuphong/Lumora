@@ -20,8 +20,9 @@ export default function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/verify-otp" element={<VerifyOtp />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/" element={<Navigate to="/home" replace />} />
         <Route
-          path="/"
+          path="/home"
           element={
             <Protected>
               <Home />

@@ -24,7 +24,7 @@ export default function Login() {
     try {
       const { data } = await authApi.login(identifier.trim(), password)
       tokens.set(data)
-      navigate('/')
+      navigate('/home')
     } catch (err) {
       setError(err?.response?.data?.detail || 'Email/số điện thoại hoặc mật khẩu không đúng.')
     } finally {
