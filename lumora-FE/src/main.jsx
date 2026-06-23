@@ -9,6 +9,7 @@ import './styles/sites.css'
 import './styles/live.css'
 import './styles/leads.css'
 import './styles/members.css'
+import './styles/billing.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
