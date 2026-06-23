@@ -11,6 +11,7 @@ import Leads from './pages/Leads'
 import Members from './pages/Members'
 import Billing from './pages/Billing'
 import { isAuthed } from './services/api'
+import { UserProvider } from './context/UserContext'
 
 function Protected({ children }) {
   return isAuthed() ? children : <Navigate to="/login" replace />
@@ -19,63 +20,65 @@ function Protected({ children }) {
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/verify-otp" element={<VerifyOtp />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/" element={<Navigate to="/dashboard" replace />} />
-        <Route
-          path="/dashboard"
-          element={
-            <Protected>
-              <Home />
-            </Protected>
-          }
-        />
-        <Route
-          path="/sites"
-          element={
-            <Protected>
-              <Sites />
-            </Protected>
-          }
-        />
-        <Route
-          path="/live-events"
-          element={
-            <Protected>
-              <Live />
-            </Protected>
-          }
-        />
-        <Route
-          path="/leads"
-          element={
-            <Protected>
-              <Leads />
-            </Protected>
-          }
-        />
-        <Route
-          path="/members"
-          element={
-            <Protected>
-              <Members />
-            </Protected>
-          }
-        />
-        <Route
-          path="/billing"
-          element={
-            <Protected>
-              <Billing />
-            </Protected>
-          }
-        />
-        <Route path="*" element={<Navigate to="/login" replace />} />
-      </Routes>
+      <UserProvider>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/verify-otp" element={<VerifyOtp />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          <Route
+            path="/dashboard"
+            element={
+              <Protected>
+                <Home />
+              </Protected>
+            }
+          />
+          <Route
+            path="/sites"
+            element={
+              <Protected>
+                <Sites />
+              </Protected>
+            }
+          />
+          <Route
+            path="/live-events"
+            element={
+              <Protected>
+                <Live />
+              </Protected>
+            }
+          />
+          <Route
+            path="/leads"
+            element={
+              <Protected>
+                <Leads />
+              </Protected>
+            }
+          />
+          <Route
+            path="/members"
+            element={
+              <Protected>
+                <Members />
+              </Protected>
+            }
+          />
+          <Route
+            path="/billing"
+            element={
+              <Protected>
+                <Billing />
+              </Protected>
+            }
+          />
+          <Route path="*" element={<Navigate to="/login" replace />} />
+        </Routes>
+      </UserProvider>
     </BrowserRouter>
   )
 }

@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { authApi } from '../services/api'
+import { useUser } from '../context/UserContext'
 import Layout from '../components/Layout'
 import {
   PlusIcon,
@@ -20,17 +19,7 @@ import {
 } from '../constants/homeData'
 
 export default function Home() {
-  const [name, setName] = useState('bạn')
-
-  useEffect(() => {
-    let mounted = true
-    authApi.me()
-      .then(({ data }) => {
-        if (mounted && data) setName(data.full_name || data.identifier || 'bạn')
-      })
-      .catch(() => {})
-    return () => { mounted = false }
-  }, [])
+  const { name } = useUser()
 
   const storagePct = (STORAGE_USED / STORAGE_TOTAL) * 100
 
@@ -41,7 +30,7 @@ export default function Home() {
         {/* Welcome */}
         <section className="welcome-card">
           <div className="welcome-text">
-            <h1>Welcome back, {name}!</h1>
+            <h1>Welcome back, {name || 'bạn'}!</h1>
             <p>Here&apos;s what&apos;s happening with your workspace today.</p>
           </div>
           <div className="welcome-visuals">

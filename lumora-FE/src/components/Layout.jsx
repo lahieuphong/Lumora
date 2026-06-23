@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
-import { authApi, tokens } from '../services/api'
+import { tokens } from '../services/api'
+import { useUser } from '../context/UserContext'
 import { NAV } from '../constants/nav'
 import {
   SearchIcon,
@@ -10,6 +11,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
   ExternalLinkIcon,
+  LogoutIcon,
 } from './icons'
 
 const STORAGE_USED  = 12.4
@@ -19,26 +21,28 @@ export default function Layout({ children }) {
   const navigate  = useNavigate()
   const location  = useLocation()
   const [open, setOpen] = useState(false)
-  const [name, setName] = useState('User')
-
-  useEffect(() => {
-    let mounted = true
-    authApi.me()
-      .then(({ data }) => {
-        if (mounted && data) setName(data.full_name || data.identifier || 'User')
-      })
-      .catch(() => {})
-    return () => { mounted = false }
-  }, [])
+  const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const userMenuRef = useRef(null)
+  const { name } = useUser()
 
   const logout = () => {
     tokens.clear()
     navigate('/login', { replace: true })
   }
 
-  const initials   = (name || 'U').trim().split(' ').map(w => w[0]).join('').toUpperCase().slice(0, 2)
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target)) {
+        setUserMenuOpen(false)
+      }
+    }
+    if (userMenuOpen) document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [userMenuOpen])
+
+  const initials   = (name || 'U').trim().split(/\s+/).map(w => w[0]).join('').toUpperCase().slice(0, 2)
   const storagePct = (STORAGE_USED / STORAGE_TOTAL) * 100
-  const activeId   = location.pathname.replace('/', '')
+  const activePath = location.pathname
 
   return (
     <div className="app">
@@ -47,7 +51,7 @@ export default function Layout({ children }) {
       {/* ── Sidebar ── */}
       <aside className={`side ${open ? 'open' : ''}`}>
         <div className="side-brand">
-          <div className="brand-logo">L</div>
+          <img src="/favicon.svg" className="brand-logo" alt="Lumora" />
           <div className="brand-text">
             <span className="brand-name">LUMORA</span>
             <span className="brand-sub">STUDIO</span>
@@ -58,7 +62,7 @@ export default function Layout({ children }) {
           {NAV.map(({ id, label, Icon, path }) => (
             <button
               key={id}
-              className={`nav-item ${activeId === id ? 'active' : ''}`}
+              className={`nav-item ${activePath === path ? 'active' : ''}`}
               onClick={() => { navigate(path); setOpen(false) }}
             >
               <Icon />
@@ -124,11 +128,27 @@ export default function Layout({ children }) {
               <BellIcon />
               <span className="dot" />
             </button>
-            <button className="user-btn" onClick={logout} title="Đăng xuất">
-              <span className="avatar">{initials}</span>
-              <span className="user-name">{name}</span>
-              <ChevronDownIcon />
-            </button>
+            <div className="user-menu-wrap" ref={userMenuRef}>
+              <button
+                className="user-btn"
+                onClick={() => setUserMenuOpen(v => !v)}
+                aria-expanded={userMenuOpen}
+              >
+                <span className="avatar">{initials}</span>
+                <span className="user-name">{name || '...'}</span>
+                <span className={`user-chevron ${userMenuOpen ? 'open' : ''}`}>
+                  <ChevronDownIcon />
+                </span>
+              </button>
+              {userMenuOpen && (
+                <div className="user-dropdown">
+                  <button className="ud-item ud-logout" onClick={logout}>
+                    <LogoutIcon />
+                    Đăng xuất
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </header>
 

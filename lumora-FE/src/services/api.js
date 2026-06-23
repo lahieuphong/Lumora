@@ -5,23 +5,35 @@ const api = axios.create({
   headers: { 'Content-Type': 'application/json' },
 })
 
-// Attach access token (skip for auth endpoints — they don't need it)
+// Endpoints that must NOT send an Authorization header
+const PUBLIC_ENDPOINTS = [
+  '/auth/login/',
+  '/auth/register/',
+  '/auth/forgot-password/',
+  '/auth/verify-otp/',
+  '/auth/reset-password/',
+]
+
+// Attach access token (skip only for public auth endpoints)
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem('lumora_access')
-  if (token && !config.url.startsWith('/auth/')) {
+  if (token && !PUBLIC_ENDPOINTS.includes(config.url)) {
     config.headers.Authorization = `Bearer ${token}`
   }
   return config
 })
 
-// On 401: clear stale tokens and redirect to login
+// On 401 from a protected endpoint: clear tokens and go to login
 api.interceptors.response.use(
   (res) => res,
   (err) => {
-    if (err?.response?.status === 401 && !err.config.url.startsWith('/auth/')) {
+    const isPublic = PUBLIC_ENDPOINTS.includes(err?.config?.url)
+    if (err?.response?.status === 401 && !isPublic) {
       localStorage.removeItem('lumora_access')
       localStorage.removeItem('lumora_refresh')
-      window.location.href = '/login'
+      if (window.location.pathname !== '/login') {
+        window.location.href = '/login'
+      }
     }
     return Promise.reject(err)
   }
