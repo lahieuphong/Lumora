@@ -7,6 +7,7 @@ import './styles/layout.css'
 import './styles/home.css'
 import './styles/sites.css'
 import './styles/live.css'
+import './styles/leads.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
