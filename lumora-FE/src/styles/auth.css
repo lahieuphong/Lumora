@@ -324,6 +324,11 @@
   font-size: 14px;
 }
 
+.resend button:not(:disabled):hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
 .resend button:disabled {
   color: var(--color-link);
   opacity: 0.85;
