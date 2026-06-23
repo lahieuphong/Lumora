@@ -20,12 +20,23 @@ def normalize_phone(value: str) -> str:
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
+    def _unique_username(self, base):
+        username = base
+        counter = 1
+        while self.filter(username=username).exists():
+            username = f'{base}{counter}'
+            counter += 1
+        return username
+
     def _create(self, identifier, password, **extra):
         if not identifier:
             raise ValueError('Cần email hoặc số điện thoại.')
         identifier = identifier.strip()
         if looks_like_email(identifier):
-            extra['email'] = self.normalize_email(identifier).lower()
+            email = self.normalize_email(identifier).lower()
+            extra['email'] = email
+            if not extra.get('username'):
+                extra['username'] = self._unique_username(email.split('@')[0])
         else:
             extra['phone'] = normalize_phone(identifier)
         user = self.model(**extra)
