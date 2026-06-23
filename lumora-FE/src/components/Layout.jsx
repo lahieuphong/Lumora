@@ -22,13 +22,17 @@ export default function Layout({ children }) {
   const location  = useLocation()
   const [open, setOpen] = useState(false)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const [loggingOut, setLoggingOut] = useState(false)
   const userMenuRef = useRef(null)
   const { name, refresh } = useUser()
 
   const logout = () => {
-    tokens.clear()
-    refresh()
-    navigate('/login', { replace: true })
+    setLoggingOut(true)
+    setTimeout(() => {
+      tokens.clear()
+      refresh()
+      navigate('/login', { replace: true })
+    }, 380)
   }
 
   useEffect(() => {
@@ -46,7 +50,7 @@ export default function Layout({ children }) {
   const activePath = location.pathname
 
   return (
-    <div className="app">
+    <div className={`app${loggingOut ? ' app--fade-out' : ''}`}>
       {open && <div className="overlay" onClick={() => setOpen(false)} />}
 
       {/* ── Sidebar ── */}
