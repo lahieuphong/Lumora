@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import AuthLayout from '../components/AuthLayout'
 import Brand from '../components/Brand'
 import { EyeIcon, EyeOffIcon } from '../components/icons'
-import { authApi, tokens } from '../services/api'
+import { authApi } from '../services/api'
 
 export default function Register() {
   const navigate = useNavigate()
@@ -32,8 +32,7 @@ export default function Register() {
         identifier: identifier.trim(),
         password,
       })
-      tokens.set(data)
-      navigate('/')
+      navigate('/login', { replace: true })
     } catch (err) {
       setError(err?.response?.data?.detail || 'Đăng ký không thành công. Vui lòng thử lại.')
     } finally {

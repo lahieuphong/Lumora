@@ -4,9 +4,11 @@ import AuthLayout from '../components/AuthLayout'
 import Brand from '../components/Brand'
 import { EyeIcon, EyeOffIcon } from '../components/icons'
 import { authApi, tokens } from '../services/api'
+import { useUser } from '../context/UserContext'
 
 export default function Login() {
   const navigate = useNavigate()
+  const { refresh } = useUser()
   const [identifier, setIdentifier] = useState('')
   const [password, setPassword] = useState('')
   const [showPw, setShowPw] = useState(false)
@@ -24,6 +26,7 @@ export default function Login() {
     try {
       const { data } = await authApi.login(identifier.trim(), password)
       tokens.set(data)
+      refresh()
       navigate('/dashboard')
     } catch (err) {
       setError(err?.response?.data?.detail || 'Email/số điện thoại hoặc mật khẩu không đúng.')

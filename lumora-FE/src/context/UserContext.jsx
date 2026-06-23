@@ -1,24 +1,26 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useCallback, useContext, useEffect, useState } from 'react'
 import { authApi } from '../services/api'
 
-const UserCtx = createContext({ name: '' })
+const UserCtx = createContext({ name: '', refresh: () => {} })
 
 export function UserProvider({ children }) {
   const [name, setName] = useState('')
 
-  useEffect(() => {
-    if (!localStorage.getItem('lumora_access')) return
-    let mounted = true
+  const refresh = useCallback(() => {
+    if (!localStorage.getItem('lumora_access')) {
+      setName('')
+      return
+    }
     authApi.me()
       .then(({ data }) => {
-        if (mounted && data)
-          setName(data.full_name || data.name || data.identifier || '')
+        if (data) setName(data.full_name || data.name || data.identifier || '')
       })
-      .catch(() => {})
-    return () => { mounted = false }
+      .catch(() => setName(''))
   }, [])
 
-  return <UserCtx.Provider value={{ name }}>{children}</UserCtx.Provider>
+  useEffect(() => { refresh() }, [refresh])
+
+  return <UserCtx.Provider value={{ name, refresh }}>{children}</UserCtx.Provider>
 }
 
 export const useUser = () => useContext(UserCtx)

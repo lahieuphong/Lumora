@@ -23,10 +23,11 @@ export default function Layout({ children }) {
   const [open, setOpen] = useState(false)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
   const userMenuRef = useRef(null)
-  const { name } = useUser()
+  const { name, refresh } = useUser()
 
   const logout = () => {
     tokens.clear()
+    refresh()
     navigate('/login', { replace: true })
   }
 
