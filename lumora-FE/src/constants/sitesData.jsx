@@ -8,6 +8,9 @@ import {
   WifiIcon,
   SearchPlusIcon,
   BarChartIcon,
+  LayoutIcon,
+  UsersIcon,
+  TagIcon,
 } from '../components/icons'
 
 export const SITE_TABS = ['All Sites', 'Published', 'Drafts', 'Scheduled', 'Archived']
@@ -51,4 +54,46 @@ export const SITE_TIPS = [
   { Icon: GlobeIcon,      title: 'Connect a custom domain', desc: 'Build trust and brand recognition with your own domain.' },
   { Icon: SearchPlusIcon, title: 'Optimize for SEO',        desc: 'Improve discoverability with meta tags and clean URLs.' },
   { Icon: BarChartIcon,   title: 'Track performance',       desc: 'Use analytics to understand your audience and improve results.' },
+]
+
+export const CREATE_SITE_STEPS = [
+  'Choose starting point',
+  'Site details',
+  'Choose template',
+  'Review & open builder',
+]
+
+export const CREATE_TEMPLATE_OVERVIEW = [
+  { Icon: LayoutIcon, label: 'Template Name', value: 'Business Website' },
+  { Icon: TagIcon,    label: 'Category',      value: 'Business' },
+  { Icon: UsersIcon,  label: 'Ideal for',     value: 'Small businesses, consultants, and service providers looking to build trust and generate leads.' },
+  { Icon: DocIcon,    label: 'Description',   value: 'A modern, conversion-focused website template with clean layouts, strong CTAs, and sections that help you showcase your services and grow your audience.' },
+]
+
+export const CREATE_TEMPLATE_TAGS = ['Business', 'Marketing', 'Lead Generation', 'Modern']
+
+export const CREATE_TEMPLATE_PAGES = [
+  'Home',
+  'About',
+  'Services',
+  'Contact',
+  'Landing Page',
+  'Webinar Page',
+]
+
+export const CREATE_TEMPLATE_FEATURES = [
+  { Icon: MonitorIcon,    text: 'Responsive layout' },
+  { Icon: LayoutIcon,     text: 'CTA sections' },
+  { Icon: PageIcon,       text: 'Lead capture form' },
+  { Icon: BarChartIcon,   text: 'Analytics-ready' },
+  { Icon: SearchPlusIcon, text: 'SEO-friendly' },
+  { Icon: LinkIcon,       text: 'Customizable blocks' },
+]
+
+export const CREATE_SIMILAR_TEMPLATES = [
+  { title: 'Landing Page',     desc: 'High-converting landing page for campaigns.' },
+  { title: 'Event Page',       desc: 'Promote events and manage registrations.' },
+  { title: 'Agency Website',   desc: 'Perfect for agencies and digital studios.' },
+  { title: 'Portfolio Site',   desc: 'Showcase your work and case studies.' },
+  { title: 'Service Business', desc: 'Build trust and generate leads with ease.' },
 ]

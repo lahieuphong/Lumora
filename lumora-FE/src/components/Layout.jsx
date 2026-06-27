@@ -64,16 +64,20 @@ export default function Layout({ children }) {
         </div>
 
         <nav className="nav">
-          {NAV.map(({ id, label, Icon, path }) => (
-            <button
-              key={id}
-              className={`nav-item ${activePath === path ? 'active' : ''}`}
-              onClick={() => { navigate(path); setOpen(false) }}
-            >
-              <Icon />
-              {label}
-            </button>
-          ))}
+          {NAV.map(({ id, label, Icon, path }) => {
+            const isActive = activePath === path || (path === '/sites' && activePath.startsWith('/sites/'))
+
+            return (
+              <button
+                key={id}
+                className={`nav-item ${isActive ? 'active' : ''}`}
+                onClick={() => { navigate(path); setOpen(false) }}
+              >
+                <Icon />
+                {label}
+              </button>
+            )
+          })}
         </nav>
 
         <div className="side-foot">

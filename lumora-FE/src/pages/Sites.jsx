@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Layout from '../components/Layout'
 import {
   PlusIcon,
@@ -26,6 +27,7 @@ import {
 } from '../constants/sitesData'
 
 export default function Sites() {
+  const navigate = useNavigate()
   const [activeTab, setActiveTab] = useState('All Sites')
   const [selected, setSelected]   = useState(new Set())
 
@@ -58,7 +60,7 @@ export default function Sites() {
           </div>
           <div className="sc-actions">
             <div className="sc-create-wrap">
-              <button className="sc-btn-create">
+              <button className="sc-btn-create" onClick={() => navigate('/sites/create')}>
                 <PlusIcon /> Create Website
               </button>
               <div className="sc-create-pills">

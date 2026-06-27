@@ -6,6 +6,7 @@ import VerifyOtp from './pages/VerifyOtp'
 import ResetPassword from './pages/ResetPassword'
 import Home from './pages/Home'
 import Sites from './pages/Sites'
+import SitesCreate from './pages/SitesCreate'
 import Live from './pages/Live'
 import Leads from './pages/Leads'
 import Members from './pages/Members'
@@ -41,6 +42,14 @@ export default function App() {
             element={
               <Protected>
                 <Sites />
+              </Protected>
+            }
+          />
+          <Route
+            path="/sites/create"
+            element={
+              <Protected>
+                <SitesCreate />
               </Protected>
             }
           />

@@ -77,4 +77,8 @@ export const authApi = {
   me: () => api.get('/auth/me/'),
 }
 
+export const sitesApi = {
+  setup: () => api.get('/sites/setup/'),
+}
+
 export default api
