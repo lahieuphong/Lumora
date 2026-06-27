@@ -93,3 +93,22 @@ docker exec lumora-be-backend-1 python manage.py migrate
 # Kiểm tra trạng thái migration
 docker exec lumora-be-backend-1 python manage.py showmigrations accounts
 ```
+
+---
+
+### Tắt Docker và dọn dẹp dữ liệu
+
+Khi muốn tắt backend Docker và xoá luôn database volume của project:
+
+```bash
+cd /Users/lahieuphong/Downloads/Phong_Nho_IT/Lumora/lumora-BE
+docker compose down -v
+```
+
+Dọn các container, network, image cache không còn dùng:
+
+```bash
+docker system prune
+```
+
+> Lưu ý: `docker compose down -v` sẽ xoá database PostgreSQL hiện tại. Nếu cần giữ dữ liệu, hãy backup trước hoặc restore lại từ file trong thư mục `backups/`.
